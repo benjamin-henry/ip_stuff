@@ -41,10 +41,10 @@ goto CFG
 
 :DHCP
 @echo off
-echo Enabling DHCP
 netsh interface ipv4 set address name="%nom_reseau%" source="dhcp"
 @REM netsh interface ipv4 delete dnsservers "%nom_reseau%" all
 netsh interface ipv4 set dnsservers name="%nom_reseau%" source="dhcp"
+echo DHCP actif
 goto CFG
 
 :CFG
