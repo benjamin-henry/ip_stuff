@@ -20,7 +20,7 @@ goto choix
 echo off
 set /p ip=Adresse IP :
 set /p masque=Masque de sous-reseau (defaut=255.255.255.0) : 
-set /p passerelle=Passerelle par default :
+set /p passerelle=Passerelle par defaut :
 set /p dns1=Serveur DNS prefere (defaut=8.8.4.4):
 set /p dns2=Serveur DNS auxiliaire (defaut=8.8.8.8):
 
