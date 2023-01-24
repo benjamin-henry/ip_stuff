@@ -32,23 +32,23 @@ if not defined dns1 (
     set dns1="8.8.4.4"
 )
 if not defined dns2 (
-    set dsn2="8.8.8.8"
+    set dns2="8.8.8.8"
 )
 
 netsh interface ipv4 set address name="%nom_reseau%" static "%ip%" "%masque%" "%passerelle%"
-netsh interface ipv4 add dns name="%nom_reseau%" addr=%dns1% index=1
-goto CFG
+netsh interface ipv4 set dnsservers name="%nom_reseau%" static none
+netsh interface ipv4 set dnsservers name="%nom_reseau%" static %dns1%
+netsh interface ipv4 add dnsservers name="%nom_reseau%" %dns2% index=2
+goto PAUSE    
 
 :DHCP
 @echo off
-netsh interface ipv4 set address name="%nom_reseau%" source="dhcp"
-@REM netsh interface ipv4 delete dnsservers "%nom_reseau%" all
-netsh interface ipv4 set dnsservers name="%nom_reseau%" source="dhcp"
-echo DHCP actif
-goto CFG
+netsh interface ipv4 set address name="%nom_reseau%" source=dhcp
+netsh interface ipv4 delete dnsservers name="%nom_reseau%" all
+netsh interface ipv4 set dnsservers name="%nom_reseau%" source=dhcp
+goto PAUSE
 
-:CFG
-netsh interface ipv4 show config "%nom_reseau%"
+:PAUSE
 pause
 goto end
 
