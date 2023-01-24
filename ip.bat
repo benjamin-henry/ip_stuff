@@ -1,5 +1,5 @@
 @echo off
-set localDelayedExpension
+setlocal EnableDelayedExpension
 
 netsh interface ipv4 show config
 echo ==================
