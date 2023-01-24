@@ -1,4 +1,4 @@
-echo off
+@echo off
 set localDelayedExpension
 
 netsh interface ipv4 show config
@@ -11,7 +11,6 @@ echo 2 - DHCP
 echo ==================
 
 :choix
-echo off
 set /p c=1 ou 2 ? 
 if %c%==1 goto Statique
 if %c%==2 goto DHCP
@@ -42,7 +41,6 @@ netsh interface ipv4 add dnsservers name="%nom_reseau%" %dns2% index=2
 goto PAUSE    
 
 :DHCP
-@echo off
 netsh interface ipv4 set address name="%nom_reseau%" source=dhcp
 netsh interface ipv4 delete dnsservers name="%nom_reseau%" all
 netsh interface ipv4 set dnsservers name="%nom_reseau%" source=dhcp
